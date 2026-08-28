@@ -23,7 +23,7 @@ This tool wraps that whole process into a few clicks: pick a year → pick an ed
 - 🎯 **Selectable year**: 2019 / 2022 / 2026 / **latest** — covers mainstream and evergreen releases
 - 🎓 **Selectable edition**: Community (free) / Professional / Enterprise
 - 📁 **Custom install path**: type it or use "Browse…"; defaults to `D:\tools\visualstudio2022` and remembers the last one used
-- ✅ **Unity Hub toggle**: checked = install with recommended components (incl. Unity Hub); unchecked = core + lightweight components only, skipping Hub and the heavier Copilot component
+- ✅ **Unity Hub toggle**: checked = **explicitly adds the Unity Hub component** (`Microsoft.VisualStudio.Component.UnityEngine.x64`) along with recommended components — guaranteed when checked; unchecked = core + lightweight components only, no Hub and no heavy Copilot component
 - 🧪 **Auto-verification**: checks `devenv.exe`, `VS Tools for Unity`, and vswhere registration after install — output to the UI and to `install.log`
 - 🔔 **Existing-install detection**: warns with a dialog if the target path already has Visual Studio
 

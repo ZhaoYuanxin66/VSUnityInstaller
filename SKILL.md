@@ -25,6 +25,7 @@ description: 一键安装 Visual Studio(Unity 工作负载)，可自选年份/�
 - Unity 工作负载 ID：`Microsoft.VisualStudio.Workload.ManagedGame`；核心组件 `Microsoft.VisualStudio.Component.Unity`（VS Tools for Unity）。
 - 装后核验（`verify_install`）：`devenv.exe` 在 `Common7\IDE\`、`Visual Studio Tools for Unity` 扩展在 `Common7\IDE\Extensions\Microsoft\`，再用 vswhere（`C:\Program Files (x86)\Microsoft Visual Studio\Installer\vswhere.exe`）确认注册。
 - **GUI 必须 `app.mainloop()`**：构造 `tk.Tk` 后没进 mainloop，程序会"窗闪一下即 exit 0"，务必在 main() 里调 `mainloop()`。
+- **Unity Hub 别只靠 `--includeRecommended`**：微软把 Unity Hub（`Component.UnityEngine.x64`）在工作负载表里标为 Recommended，但安装指南又把它列在 Optional——归类有歧义，`--includeRecommended` 不保证装到。要保证勾选即装，必须**显式追加 `--add Microsoft.VisualStudio.Component.UnityEngine.x64`**（`build_install_args(hub=True)` 里已这样做）。
 
 ## 重新打包
 ```

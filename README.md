@@ -23,7 +23,7 @@ Visual Studio 要用于 Unity 开发，必须在安装时勾选「使用 Unity �
 - 🎯 **可选年份**：2019 / 2022 / 2026 / **最新(latest)**，覆盖主流与常青版本
 - 🎓 **可选版别**：Community（免费）/ Professional / Enterprise
 - 📁 **自定义安装位置**：文本框输入或「浏览…」选择，默认 `D:\tools\visualstudio2022`，并记忆上次使用的位置
-- ✅ **Unity Hub 开关**：勾选=连同推荐组件一起装（含 Unity Hub）；取消=只装核心 + 轻量组件，跳过 Hub 与较大的 Copilot 组件
+- ✅ **Unity Hub 开关**：勾选=**显式加装 Unity Hub 组件**（`Microsoft.VisualStudio.Component.UnityEngine.x64`）并带推荐组件，勾选即必装；取消=只装核心 + 轻量组件，不装 Hub 与较大的 Copilot 组件
 - 🧪 **自动核验**：装完检查 `devenv.exe`、`VS Tools for Unity`、vswhere 注册三项，结果输出到界面并写入 `install.log`
 - 🔔 **目标已存在检测**：目标路径已有 VS 时弹框提示，由你决定是否继续
 
@@ -55,7 +55,7 @@ Visual Studio 要用于 Unity 开发，必须在安装时勾选「使用 Unity �
 ## 安装/核验流程说明
 
 1. 下载官方引导程序（`vs_community.exe` 等）到临时目录
-2. 调用引导程序：`--installPath <路径> --add Microsoft.VisualStudio.Workload.ManagedGame --quiet --norestart --wait`；勾选 Unity Hub 时追加 `--includeRecommended`
+2. 调用引导程序：`--installPath <路径> --add Microsoft.VisualStudio.Workload.ManagedGame --quiet --norestart --wait`；勾选 Unity Hub 时追加 `--includeRecommended --add Microsoft.VisualStudio.Component.UnityEngine.x64`（显式指定，保证必装）
 3. 装后核验三项：
    - `devenv.exe` 是否存在于 `Common7\IDE\`
    - `Visual Studio Tools for Unity` 扩展是否落在 `Common7\IDE\Extensions\Microsoft\`

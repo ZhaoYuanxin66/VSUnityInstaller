@@ -29,6 +29,7 @@ _BOOTSTRAP_URL = {
 }
 
 WORKLOAD = "Microsoft.VisualStudio.Workload.ManagedGame"  # 使用 Unity 的游戏开发
+UNITY_HUB_COMPONENT = "Microsoft.VisualStudio.Component.UnityEngine.x64"  # Unity Hub（显式指定，勾选即必装）
 # 不装 Unity Hub / Copilot 时，显式加的核心 + 轻量推荐组件
 _UNITY_CORE_COMPONENTS = [
     "Microsoft.VisualStudio.Workload.ManagedGame",
@@ -88,8 +89,11 @@ def build_install_args(install_path: str, hub: bool):
         "--wait",
     ]
     if hub:
-        # 默认：连同推荐组件（含 Unity Hub）
-        args.append("--includeRecommended")
+        # 显式追加 Unity Hub 组件（不依赖有歧义的 includeRecommended 归类，勾选即必装）
+        args.extend([
+            "--includeRecommended",
+            "--add", UNITY_HUB_COMPONENT,
+        ])
     else:
         # 不装 Unity Hub：显式点选核心 + 轻量组件
         for comp in _UNITY_CORE_COMPONENTS[1:]:
