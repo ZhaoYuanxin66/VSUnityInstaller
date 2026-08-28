@@ -1,0 +1,4 @@
+# 运行期仅需标准库（tkinter 随 Python 自带）。
+# 打 EXE 需要 PyInstaller（仅构建期依赖）：
+#   pip install pyinstaller
+#   python -m PyInstaller --onefile --windowed --name VSUnityInstaller main.py
