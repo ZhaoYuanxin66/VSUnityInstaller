@@ -3,4 +3,5 @@ dist/
 *.spec
 __pycache__/
 *.pyc
-.DS_Storeinstall.log
+install.log
+.DS_Store
